@@ -8,12 +8,12 @@ import ru.asteises.currency_converter.util.CurrencyCode;
 public class App {
 
     public static void main(String[] args) {
+
         Converter converter = ConverterImpl.getInstance();
-        CurrencyConverter currencyRubConverter = converter.getConverterByCurrencyCode(CurrencyCode.USD);
-        System.out.println(currencyRubConverter.convert(1, CurrencyCode.USD));
-        System.out.println(currencyRubConverter.convert(1000, CurrencyCode.USD));
-        currencyRubConverter.setExchangeRateByCurrencyCode(CurrencyCode.USD, 111.11);
-        System.out.println(currencyRubConverter.convert(1000, CurrencyCode.USD));
-        System.out.println(currencyRubConverter.convert(1000, CurrencyCode.findByValue("BLABLA")));
+        CurrencyConverter rubConverter = converter.getConverterByCurrencyCode(CurrencyCode.RUB);
+        System.out.println(rubConverter.convert(1000.0, CurrencyCode.USD));
+        rubConverter.setExchangeRateByCurrencyCode(CurrencyCode.USD, 99.99);
+        System.out.println(rubConverter.convert(1000.0, CurrencyCode.USD));
+        rubConverter.convert(1000.0, CurrencyCode.findByValue("BLABLA"));
     }
 }
