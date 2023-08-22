@@ -21,10 +21,10 @@ public enum CurrencyCode {
 
     public static CurrencyCode findByValue(String title) {
         for (CurrencyCode code : values()) {
-            if (!code.getTitle().equals(title)) {
-                throw new IllegalArgumentException("Currency code doesn't exist");
+            if (code.getTitle().equals(title)) {
+                return CurrencyCode.valueOf(title);
             }
         }
-        return CurrencyCode.valueOf(title);
+        throw new IllegalArgumentException("Currency code doesn't exist");
     }
 }

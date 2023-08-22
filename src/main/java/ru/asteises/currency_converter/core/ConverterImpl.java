@@ -1,19 +1,18 @@
 package ru.asteises.currency_converter.core;
 
 import ru.asteises.currency_converter.converters.CurrencyConverter;
-import ru.asteises.currency_converter.converters.CurrencyRubConverter;
+import ru.asteises.currency_converter.converters.rub.RubConverterImpl;
 import ru.asteises.currency_converter.util.CurrencyCode;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class ConverterImpl implements Converter {
 
     private static ConverterImpl INSTANCE;
-    private final Map<CurrencyCode, CurrencyConverter> converters = new HashMap<>();
+    private final HashMap<CurrencyCode, CurrencyConverter> converters = new HashMap<>();
 
     public ConverterImpl() {
-        converters.put(CurrencyCode.RUB, new CurrencyRubConverter());
+        converters.put(RubConverterImpl.currencyCode, new RubConverterImpl());
     }
 
     public static ConverterImpl getInstance() {
@@ -28,7 +27,7 @@ public class ConverterImpl implements Converter {
         return getConverters().get(currencyCode);
     }
 
-    public Map<CurrencyCode, CurrencyConverter> getConverters() {
+    public HashMap<CurrencyCode, CurrencyConverter> getConverters() {
         return converters;
     }
 }
