@@ -12,7 +12,8 @@ public class ConverterImpl implements Converter {
     private final HashMap<CurrencyCode, CurrencyConverter> converters = new HashMap<>();
 
     public ConverterImpl() {
-        converters.put(RubConverterImpl.currencyCode, new RubConverterImpl());
+        RubConverterImpl rubConverter = new RubConverterImpl();
+        converters.put(rubConverter.getCurrencyCode(), rubConverter);
     }
 
     public static ConverterImpl getInstance() {

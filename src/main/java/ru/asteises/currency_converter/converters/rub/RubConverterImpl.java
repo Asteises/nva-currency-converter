@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class RubConverterImpl implements CurrencyConverter {
 
-    public static final CurrencyCode currencyCode = CurrencyCode.RUB;
+    private final CurrencyCode currencyCode = CurrencyCode.RUB;
 
     private final HashMap<CurrencyCode, Double> currencyCodeDoubleHashMap = CurrencyConverter.currencyExchangeRate;
 
@@ -25,7 +25,11 @@ public class RubConverterImpl implements CurrencyConverter {
      */
     @Override
     public double convert(double sum, CurrencyCode currencyCodeIn) {
-        return sum / getExchangeRateByCurrencyCode(currencyCodeIn);
+        double exchangeRate = getExchangeRateByCurrencyCode(currencyCodeIn);
+        double sumOut = sum / exchangeRate;
+        System.out.println("Меняем " + this.currencyCode.getName() + " сумма: " + sum +
+                " на " + currencyCodeIn.getName() + " по курсу: " + exchangeRate + " получаем: " + sumOut);
+        return sumOut;
     }
 
     /**
@@ -47,5 +51,9 @@ public class RubConverterImpl implements CurrencyConverter {
     @Override
     public HashMap<CurrencyCode, Double> getCurrencyExchangeRate() {
         return currencyCodeDoubleHashMap;
+    }
+
+    public CurrencyCode getCurrencyCode() {
+        return currencyCode;
     }
 }

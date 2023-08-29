@@ -11,9 +11,9 @@ public class App {
 
         Converter converter = ConverterImpl.getInstance();
         CurrencyConverter rubConverter = converter.getConverterByCurrencyCode(CurrencyCode.findByValue("RUB"));
-        System.out.println(rubConverter.convert(1000.0, CurrencyCode.findByValue("USD")));
+        rubConverter.convert(1000.0, CurrencyCode.findByValue("USD"));
         rubConverter.setExchangeRateByCurrencyCode(CurrencyCode.findByValue("USD"), 99.99);
-        System.out.println(rubConverter.convert(1000.0, CurrencyCode.findByValue("USD")));
+        rubConverter.convert(1000.0, CurrencyCode.findByValue("USD"));
         rubConverter.convert(1000.0, CurrencyCode.findByValue("BLABLA"));
     }
 }
